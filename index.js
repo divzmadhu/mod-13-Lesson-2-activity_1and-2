@@ -8,12 +8,18 @@ import mongoose from 'mongoose';
 // bring in our model
 import Book from './models/Book.js';
 
+
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("Connected to MongoDB"))
 .catch((e) => console.log(e));
 
 const app = express();
 // console.log(process.env.MONGO_URI);
+
+//apply our middleware (for POST and PUT/PATCH )
+app.use(express.json());
+
 const port = process.env.PORT || 3000;
 
 //handle a POST request to create a new document
