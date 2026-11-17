@@ -26,8 +26,10 @@ const port = process.env.PORT || 3000;
 app.post("/api/books", async (req,res) =>{
     //create a new document for the books colllection (temporary)
     const newBook = new Book({
-        title:"The Life of Bob",
-        author : "Bob"
+        // title:"The Life of Bob",
+        title: req.body.title,
+        author :req.body.author,
+        publicationYear: req.body.publicationYear
     });
 
     //Save this book document in our database (permanently)
